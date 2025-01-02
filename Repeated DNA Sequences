@@ -1,0 +1,30 @@
+/***** Leetcode-187 Repeated DNA Sequences *****/
+
+class Solution {
+public:
+    vector<string> findRepeatedDnaSequences(string s) {
+        vector<string> ans;
+        int n = s.length();
+        unordered_map<string,int> mp;
+
+        int i=0,j=9;
+
+        while(i<j && j<n){
+            string temp;
+            for(int k=i;k<=j;k++){
+                temp+=s[k];
+            }
+            mp[temp]++;
+            i++;
+            j++;
+        }
+
+        for(auto it:mp){
+            if(it.second > 1){
+                ans.push_back(it.first);
+            }
+        }
+
+        return ans;
+    }
+};
