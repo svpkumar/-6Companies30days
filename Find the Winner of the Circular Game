@@ -1,0 +1,21 @@
+/***** Leetcode-1823 Find the Winner of the Circular Game ****/
+
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        vector<int> circle;
+
+        for(int i=1;i<=n;i++){
+            circle.push_back(i);
+        }
+
+        int startIdx = 0;
+
+        while(circle.size() > 1){
+            int removalIdx = (startIdx + k -1)%circle.size();
+            circle.erase(circle.begin()+removalIdx);
+            startIdx = removalIdx;
+        }
+        return circle.front();
+    }
+};
