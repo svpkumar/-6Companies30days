@@ -1,0 +1,18 @@
+//****** Leetcode-387 First Unique Character in a String *****//
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        vector<int> count(26,0);
+
+        for(auto it:s){
+            count[it-'a']++;
+        }
+
+        for(auto i:s){
+            if(count[i-'a'] == 1){
+                return s.find(i);
+            }
+        }
+        return -1;
+    }
+};
